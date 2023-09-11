@@ -15,6 +15,10 @@ namespace Full_GRASP_And_SOLID.Library
 
         public Product FinalProduct { get; set; }
 
+        public ArrayList Steps{
+            get{ return steps; }
+        }
+
         public void AddStep(Step step)
         {
             this.steps.Add(step);
@@ -27,12 +31,8 @@ namespace Full_GRASP_And_SOLID.Library
 
         public void PrintRecipe()
         {
-            Console.WriteLine($"Receta de {this.FinalProduct.Description}:");
-            foreach (Step step in this.steps)
-            {
-                Console.WriteLine($"{step.Quantity} de '{step.Input.Description}' " +
-                    $"usando '{step.Equipment.Description}' durante {step.Time}");
-            }
+            ConsolePrinter consolePrinter = new ConsolePrinter();
+            consolePrinter.PrintRecipe(this);
         }
     }
 }
